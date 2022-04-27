@@ -145,8 +145,8 @@ public class PowerOutage {
 
 	@Override    //tolto anche nerc_id dalla stampa
 	public String toString() {
-		return "id=" + id + ", customers_affected=" + customers_affected + ", date_event_began=" + date_event_began 
-				+", date_event_finished=" + date_event_finished + ", duration=" + duration;
+		//return id +"  Persone coinvolte:"+ customers_affected +"  "+ date_event_began +"  "+ date_event_finished +"  Durata(in ore):"+ duration;
+		return date_event_began.getYear()+" "+date_event_began+" "+date_event_finished+" "+duration+" "+customers_affected;
 	}
 	
 	/*@Override
