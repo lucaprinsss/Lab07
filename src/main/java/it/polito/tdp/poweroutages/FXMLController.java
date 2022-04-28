@@ -6,6 +6,7 @@ package it.polito.tdp.poweroutages;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import it.polito.tdp.poweroutages.model.Model;
@@ -46,9 +47,13 @@ public class FXMLController {
     	int x=Integer.parseInt(txtYears.getText());
     	int y=Integer.parseInt(txtHours.getText());
     	List<PowerOutage> lista= new ArrayList<PowerOutage>(model.listaMigliore(nerc, x, y));
-    	for(PowerOutage p : lista)
-    		txtResult.setText(p+"\n");
-
+    	Collections.sort(lista, new ordinaPerData());
+    	int c=0;
+    	for(PowerOutage p : lista) {
+    		txtResult.appendText(p+"\n");
+    		c+=p.getCustomers_affected();
+    	}
+    	txtResult.appendText("Il numero totale di persone coinvolte è: "+c+"\n");
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
